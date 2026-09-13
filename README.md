@@ -20,11 +20,11 @@ The command uses the standard analysis driver and supports `-fix`, `-diff`, `-js
 
 ## Use with `go vet`
 
-Build the analyzer once and pass it to `go vet` as a vettool:
+Install the analyzer and pass the executable resolved by `which` to `go vet`:
 
 ```sh
-go build -o ./bin/importalias ./cmd/importalias
-go vet -vettool=./bin/importalias ./...
+go install github.com/satorunooshie/importalias/cmd/importalias@latest
+go vet -vettool=$(which importalias) ./...
 ```
 
 This makes `importalias` usable in existing `go vet` and CI workflows.
