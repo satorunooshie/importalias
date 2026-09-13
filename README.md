@@ -18,6 +18,17 @@ importalias ./...
 
 The command uses the standard analysis driver and supports `-fix`, `-diff`, `-json`, and editor integrations.
 
+## Use with `go vet`
+
+Build the analyzer once and pass it to `go vet` as a vettool:
+
+```sh
+go build -o ./bin/importalias ./cmd/importalias
+go vet -vettool=./bin/importalias ./...
+```
+
+This makes `importalias` usable in existing `go vet` and CI workflows.
+
 ## Ignoring a diagnostic
 
 Use a Go directive to suppress one analyzer diagnostic on a line, or all
