@@ -30,3 +30,6 @@ package example
 
 The directive follows the standard `ast.ParseDirective` syntax and is handled
 by the reusable `interceptor` package.
+
+See [the analyzer specification](docs/analyzer-spec.md) for the complete rule
+set and suggested-fix safety conditions.
