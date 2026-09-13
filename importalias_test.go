@@ -7,7 +7,7 @@ import (
 )
 
 func TestAnalyzer(t *testing.T) {
-	analysistest.RunWithSuggestedFixes(t, analysistest.TestData(), Analyzer, "a")
+	analysistest.RunWithSuggestedFixes(t, analysistest.TestData(), Analyzer, "a", "directives", "samepkg")
 }
 
 func TestImportPathImpliedName(t *testing.T) {

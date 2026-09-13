@@ -1,0 +1,5 @@
+package target
+
+import "example.com/importalias/target" // want `import alias "renamed" is unnecessary; package name is "target"`
+
+var _ = target.Value

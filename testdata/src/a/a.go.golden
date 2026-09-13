@@ -2,12 +2,17 @@ package a
 
 import (
 	"encoding/json" // want `import alias "json" is unnecessary; package name is "json"`
+	_ "example.com/importalias/blank"
+	. "example.com/importalias/dot"
 	"example.com/importalias/underscore" // want `imported package name "underscore_pkg" contains underscore; use an alias`
+	"example.com/importalias/schema/v2" // want `import alias "schemaapi" is unnecessary; package name is "schema"`
 	"example.com/importalias/target" // want `import alias "renamed" is unnecessary; package name is "target"`
 )
 
 var (
 	_ = json.Valid
 	_ = underscore_pkg.Value
+	_ = schema.Value
 	_ = target.Value
+	_ = DotValue
 )

@@ -17,3 +17,16 @@ importalias ./...
 ```
 
 The command uses the standard analysis driver and supports `-fix`, `-diff`, `-json`, and editor integrations.
+
+## Ignoring a diagnostic
+
+Use a Go directive to suppress one analyzer diagnostic on a line, or all
+diagnostics in a file:
+
+```go
+//importalias:ignore importalias
+package example
+```
+
+The directive follows the standard `ast.ParseDirective` syntax and is handled
+by the reusable `interceptor` package.

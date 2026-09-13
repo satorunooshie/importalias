@@ -13,22 +13,21 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/satorunooshie/importalias/interceptor"
 	"golang.org/x/tools/go/analysis"
 )
 
-// Analyzer is the importalias analyzer.
-var Analyzer = &analysis.Analyzer{
+var analyzer = &analysis.Analyzer{
 	Name: "importalias",
 	Doc:  "reports unnecessary import aliases and import names containing underscores",
 	Run:  run,
 }
 
+// Analyzer is the importalias analyzer.
+var Analyzer = interceptor.With(analyzer, interceptor.SkipGeneratedFile, interceptor.SkipByDirective("importalias"))
+
 func run(pass *analysis.Pass) (any, error) {
 	for _, file := range pass.Files {
-		if ast.IsGenerated(file) {
-			continue
-		}
-
 		uses := packageUses(pass, file)
 		for _, spec := range file.Imports {
 			alias := ""
